@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J8Outlet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="menu">
+            <i class="fa-solid fa-bars" style="color: rgb(0, 0, 0);"></i>
+        </div>
+
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://cdn.offstoreimages.me/compressed/a9ca6ca704ed7659ea2e482198a7759c.webp" alt="Logo">
+            </a>
+        </div>
+
+        <div class="busca">
+            <input type="text" name="q" placeholder="Buscar">
+             <button type="submit"> 
+                <i class="fa-solid fa-magnifying-glass" style="color: rgb(0, 0, 0);"></i>
+            </button>
+        </div>
+
+        <div class="cep">
+            <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 0);"></i>
+            <span>Informe seu CEP</span>
+        </div>
+
+        <div class="conta">
+            <i class="fa-regular fa-user" style="color: rgb(0, 0, 0);"></i>
+            <span>
+                Entre ou cadastra-se
+            </span>
+        </div>
+
+        <div class="icones">
+            <i class="fa-regular fa-heart" style="color: rgb(0, 0, 0);">    
+            </i>
+        
+            <i class="fa-solid fa-cart-shopping" style="color: rgb(0, 0, 0);"></i>
+
+            <i class="fa-solid fa-universal-access" style="color: rgb(0, 0, 0);"></i>
+        </div>
+    </header>
+
+        <section class="banner">
+            <div class="slide active">
+                <img class="banner-img" src="fotos/banner-2.jpg" alt="Vista o estilo que é só seu">
+                <div class="banner-overlay">
+                    <h1>VISTA O ESTILO QUE É SÓ SEU</h1>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
+            </div>
+             
+            <div class="slide">
+                <img class="banner-img" src="fotos/banner-selecaobr.webp" alt="Seleção Brasileira">
+                <div class="banner-overlay">
+                    <h1>SELEÇÃO BRASILEIRA</h1>
+                    <p>PAIXÃO QUE UNE GERAÇÕES</p>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img class="banner-img" src="fotos/banner-selecoes.webp" alt="Seleções - Copa do Mundo">
+                <div class="banner-overlay">
+                    <h1>CAMISAS SELEÇÕES</h1>
+                    <p>OFERTAS IMPERDIVEÍS</p>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
+            </div>
+
+            <button class="slide-seta anterior" onclick="mudarSlide(-1)">&#10094;</button>
+            <button class="slide-seta proxima" onclick="mudarSlide (1)">&#10095;</button>
+
+            <div class="slide-bolinhas">
+                <span class="bolinha ativa" onclick="irParaSlide(0)"></span>
+                <span class="bolinha" onclick="irParaSlide(1)"></span>
+                <span class="bolinha" onclick="irParaSlide(2)"></span>
+            </div>
+        </section>
+
+        <section class="categorias">
+            <div class="categorias-grid">
+                <a href="#" class="categoria-item">
+                <img src="fotos/premier-png.png" alt="Premier League">
+                <span>Premier League </span>
+                </a>
+
+                <a href="#" class="categoria-item">
+                    <img src="fotos/laliga-png.png" alt="La Liga">
+                    <span>La Liga</span>
+                </a>
+
+                <a href="#" class="categoria-item">
+                    <img src="fotos/italia-png.png" alt="Serie A Italia">
+                    <span>Serie A Itália</span>
+                </a>
+
+                <a href="#" class="categoria-item">
+                    <img src="fotos/brasileirao-png.png" alt="Brasileirão">
+                    <span>Brasileirão</span>
+                </a>
+
+                <a href="#" class="categoria-item">
+                    <img src="fotos/bundesliga-png.png" alt="Bundesliga">
+                    <span>Bundesliga</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="vitrine">
+            <div class="vitrine-header">
+                <h2 class="vitrine-titulo">COPA DO MUNDO 2026</h2>
+                <a href="#" class="vitrine-link"> Compre a coleçao Copa 2026</a>
+            </div>
+
+            <div class="vitrine-carrossel-container">
+                <button class="carrossel-seta anterior" onclick="deslizar('vitrineCarrossel', -1)">&#10094;</button>
+
+                <div class="vitrine-carrossel" id="vitrineCarrossel">
+
+                    <div class="produto-card">
+                        <img src="fotos/blusa_seleçao1.webp" alt="Camisa Brasil Copa do Mundo 2026 Goleiro">
+                        <h3 class="produto-nome">Camisa Brasil Copa do Mundo 2026 Goleiro</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 399,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$ 199,90</span></span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/blusa_selecao2.webp" alt="Camisa Brasil Copa do Mundo 2026 Home">
+                        <h3 class="produto-nome">Camisa Brasil Copa do Mundo 2026 Home</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$499,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$ 249,90</span></span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/camisa_selecao3.webp" alt="Camisa Brasil Jogador Copa do Mundo 2026 Home">
+                        <h3 class="produto-nome">Camisa Brasil Jogador Copa do Mundo 2026 Home</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 499,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$299,90</span></span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/camisa_selecao4.webp" alt="Camisa Brasil Jogador Copa do Mundo 2026 Away">
+                        <h3 class="produto-nome">Camisa Brasil Jogador Copa do Mundo 2026 Away</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 399,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$199,90</span></span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/camisa_selecao5.webp" alt="Camisa Brasil Feminino Copa do Mundo 2026 Away">
+                        <h3 class="produto-nome">Camisa Brasil Feminino Copa do Mundo 2026 Away</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 399,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$199,90</span></span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/blusa_infantil1.webp" alt="Infantil Brasil Copa do Mundo 2026 Home">
+                        <h3 class="produto-nome">Infantil Brasil Copa do Mundo 2026 Home</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 399,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$199,90</span></span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/camisa_infantil2.webp" alt="Infantil Brasil Copa do Mundo 2026 Goleiro">
+                        <h3 class="produto-nome">Infantil Brasil Copa do Mundo 2026 Goleiro</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 399,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$199,90</span></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="carrossel-seta proxima" onclick="deslizar('vitrineCarrossel', 1)">&#10095;</button>
+
+            </div>
+        </section>
+
+        <section class="vitrine">
+            <div class="vitrine-header">
+                <h2 class="vitrine-titulo">
+                    BRASILEIRÃO
+                </h2>
+                <a href="#" class="vitrine-link">Compre a coleção do Brasileirão</a>
+            </div>
+
+            <div class="vitrine-carrossel-container">
+                <button class="carrossel-seta anterior" onclick="deslizar('carrosselTimes', -1)">&#10094;</button>
+
+                <div class="vitrine-carrossel" id="carrosselTimes">
+
+                    <div class="produto-card">
+                        <img src="fotos/flabarnca-masc.webp" alt="CAMISA FLAMENGO BRANCA MASCULINA">
+                        <h3 class="produto-nome">CAMISA FLAMENGO BRANCA MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 349,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$159,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/flavermelha-masc.webp" alt="CAMISA FLAMENGO MASCULINA">
+                        <h3 class="produto-nome">
+                            CAMISA FLAMENGO MASCULINA
+                        </h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">
+                                R$349,90
+                            </span>
+                            <span class="preco-info">
+                                A PARTIR DE 
+                                <span class="preco-por">
+                                    R$159,90
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/palmeiras-masc.webp" alt="CAMISA PALMEIRAS MASCULINA">
+                        <h3 class="produto-nome">
+                            CAMISA PALMEIRAS MASCULINA
+                        </h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">
+                                A PARTIR DE
+                                 <span class="preco-por">
+                                    R$159,90
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/corint-masc.webp" alt="CAMISA CORINTHIANS MASCULINA">
+                        <h3 class="produto-nome">CAMISA CORINTHIANS MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$159,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/cruzeiro-masc.webp" alt="CAMISA CRUZEIRO MASCULINA">
+                        <h3 class="produto-nome">CAMISA CRUZEIRO MASCULINA
+                            
+                        </h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">
+                            A PARTIR DE
+                             <span class="preco-por">
+                                159,90
+                            </span> 
+                        </span>
+                        </div>
+                     </div>
+
+                     <div class="produto-card">
+                        <img src="fotos/cam-masc.webp" alt="CAMISA ATLÉTICO MINEIRO MASCULINA">
+                        <h3 class="produto-nome">
+                            CAMISA ATLÉTICO MINEIRO MASCULINA
+                        </h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">349,90</span>
+                            <span class="preco-info">
+                                A PARTIR DE <span class="preco-por">159,90</span>
+                            </span>
+                        </div>
+                     </div>
+
+                     <div class="produto-card">
+                        <img src="fotos/flu-masc.webp" alt="CAMISA FLUMINENSE MASCULINA">
+                        <h3 class="produto-nome">CAMISA FLUMINENSE MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">$349,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$159,90</span></span>
+                        </div>
+                     </div>
+
+                     <div class="produto-card">
+                        <img src="fotos/sp-masc.webp" alt="CAMISA SÃO PAULO MASCULINA">
+                        <h3 class="produto-nome">CAMISA SÃO PAULO MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$159,90</span></span>
+                        </div>
+                     </div>
+
+                     <div class="produto-card">
+                        <img src="fotos/vasco-masc.webp" alt="CAMISA VASCO MASCULINA">
+                        <h3 class="produto-nome">CAMISA VASCO MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$159,90</span></span>
+                        </div>
+                     </div>
+
+                     <div class="produto-card">
+                        <img src="fotos/bahia-masc.webp" alt="CAMISA BAHIA MASCULINA ">
+                        <h3 class="produto-nome">CAMISA BAHIA MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$159,90</span></span>
+                        </div>
+                     </div>
+
+                     <div class="produto-card">
+                        <img src="fotos/bragantino-masc.webp" alt="CAMISA BRAGANTINO MASCULINA ">
+                        <h3 class="produto-nome">CAMISA BRAGANTINO MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$159,90</span></span>
+                        </div>
+                     </div>
+
+                     <div class="produto-card">
+                        <img src="fotos/fortaleza-masc.webp" alt="CAMISA FORTALEZA MASCULINA ">
+                        <h3 class="produto-nome"> CAMISA FORTALEZA MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$159,90</span></span>
+                        </div>
+                     </div>
+
+                                          <div class="produto-card">
+                        <img src="fotos/cuiaba-masc.webp" alt="CAMISA CUIABÁ MASCULINA ">
+                        <h3 class="produto-nome"> CAMISA CUIABÁ MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$159,90</span></span>
+                        </div>
+                     </div>
+
+                      <div class="produto-card">
+                        <img src="fotos/santos-masc.webp" alt="CAMISA SANTOS MASCULINA">
+                        <h3 class="produto-nome"> CAMISA SANTOS MASCULINA</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$349,90</span>
+                            <span class="preco-info">A PARTIR DE <span class="preco-por">R$159,90</span></span>
+                        </div>
+                     </div>
+
+                </div>
+                <button class="carrossel-seta proxima" onclick="deslizar('carrosselTimes', 1)">&#10095;</button>
+            </div>
+
+        </section>
+
+        <section class="vitrine">
+            <div class="vitrine-header">
+                <h2 class="vitrine-titulo">FEMININO</h2>
+                <a href="#" class="vitrine-link">Compre a coleção feminina</a>
+            </div>
+
+             <div class="vitrine-carrossel-container">
+                <button class="carrossel-seta anterior" onclick="deslizar('carrosselFeminino', -1)">&#10094;</button>
+
+                <div class="vitrine-carrossel"              id="carrosselFeminino">
+
+                    <div class="produto-card">
+                        <img src="fotos/corint-fem.webp" alt="Feminina Corinthians 24∕25 Home">
+                        <h3 class="produto-nome">Feminina Corinthians 24∕25 Home</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/vasco-fem.webp" alt="Camisa Feminina do Vasco da Gama 23/24 Third - Preto">
+                        <h3 class="produto-nome">Camisa Feminina do Vasco da Gama 23/24 Third - Preto</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                     <div class="produto-card">
+                        <img src="fotos/flam-fem.avif" alt="Camisa Flamengo 24/25 Feminino - Branco">
+                        <h3 class="produto-nome">Camisa Flamengo 24/25 Feminino - Branco</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/palmeiras-fem.webp" alt="Camisa Feminina do Palmeiras Home 24/25 - Verde">
+                        <h3 class="produto-nome">Camisa Feminina do Palmeiras Home 24/25 - Verde</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/conrin-fem-preta.webp" alt="Camisa Corinthians Feminina II 24/25 - Preto">
+                        <h3 class="produto-nome">Camisa Corinthians Feminina II 24/25 - Preto</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                     <div class="produto-card">
+                        <img src="fotos/fla-fem-preta.webp" alt="Camisa Feminina Flamengo III 23/24 Adidas - Preto">
+                        <h3 class="produto-nome">Camisa Feminina Flamengo III 23/24 Adidas - Preto</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/fla-fem-vermelha.webp" alt="Camisa Feminino Flamengo 25/26 Home">
+                        <h3 class="produto-nome">Camisa Feminino Flamengo 25/26 Home</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/fla-fem-away.webp" alt="Camisa Feminina Flamengo Away II 24/25 - Branco">
+                        <h3 class="produto-nome">Camisa Feminina Flamengo Away II 24/25 - Branco</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/palmeiras-fem-branca.webp" alt="Camisa Feminina do Palmeiras Away 24/25 - Branca">
+                        <h3 class="produto-nome">Camisa Feminina do Palmeiras Away 24/25 - Branca</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/realmadrid-fem.webp" alt="Camisa 23∕24 Real Madrid l - Feminino">
+                        <h3 class="produto-nome">Camisa 23∕24 Real Madrid l - Feminino</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/cruzeiro-fem.webp" alt="Feminina Cruzeiro 24∕25 Home">
+                        <h3 class="produto-nome">Feminina Cruzeiro 24∕25 Home</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/botafogo-fem.webp" alt="Feminina Botafogo 24∕25 Home">
+                        <h3 class="produto-nome">Feminina Botafogo 24∕25 Home</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/barcelona-fem.webp" alt="Feminina Barcelona 24∕25 Home">
+                        <h3 class="produto-nome">Feminina Barcelona 24∕25 Home</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <img src="fotos/br-branca-fem.webp" alt="Camisa Brasil Feminino 19/20 Branco">
+                        <h3 class="produto-nome">Camisa Brasil Feminino 19/20 Branco</h3>
+                        <div class="produto-preco">
+                            <span class="preco-de">R$ 289,90</span>
+                            <span class="preco-info">A PARTIR DE 
+                                <span class="preco-por">
+                                    R$199,90
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="carrossel-seta proxima" onclick="deslizar('carrosselFeminino', 1)">&#10095;</button>
+            </div>
+        </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
