@@ -20,7 +20,7 @@
 }
 
 .logo img{
-    height: 50px;
+    height: 40px;
 }
 
 .header{
@@ -41,6 +41,7 @@
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px 0 0 4px;
+    font-size: 13px;
 }
 
 .busca button {
@@ -55,7 +56,7 @@
 .icones {
     display: flex;
     gap: 20px;
-    font-size: 20px;
+    font-size: 16px;
    
 }
 
@@ -73,7 +74,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
+    font-size: 12px;
     cursor: pointer;
     white-space: nowrap;
 }
@@ -166,10 +167,23 @@
     color: #fff;
 }
 
+body {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+}
+
 .banner-overlay h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
     font-size: 2.5rem;
     max-width: 700px;
     margin-bottom: 20px;
+}
+
+.categorias-titulo,
+.vitrine-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
 }
 
 .btn-comprar {
@@ -375,6 +389,44 @@
      .categoria-item img {
         width: 60px;
         height: 60px;
+     }
+     .banner-img {
+        height: 220px;
+     }
+     .banner-overlay h1 {
+        font-size: 1.5rem;
+        max-width: 90%;
+     }
+     .banner-overlay p {
+        font-size: 12px;
+     }
+     .btn-comprar {
+        padding: 8px 20px;
+        font-size: 14px;
+     }
+     .categorias-titulo,
+     .vitrine-titulo {
+        font-size: 1.3rem;
+     }
+     .vitrine {
+        padding: 20px 15px;
+     }
+     .categorias {
+        padding: 20px 15px;
+     }
+     .produto-card {
+        width: 140px;
+     }
+     .produto-card img {
+        height: 170px;
+     }
+     .produto-nome {
+        font-size: 11px;
+     }
+     .carrossel-seta {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
      }
  }
 
