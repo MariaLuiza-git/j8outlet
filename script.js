@@ -50,3 +50,13 @@ function deslizar(id, direcao) {
     const larguraCard = carrossel.querySelector(".produto-card").offsetWidth + 20; 
     carrossel.scrollBy({ left: larguraCard * direcao, behavior: "smooth" });
 }
+
+function abrirMenu() {
+    document.getElementById("menuLateral").classList.add("aberto");
+    document.getElementById("menuOverlay").classList.add("ativo");
+}
+
+function fecharMenu() {
+    document.getElementById("menuLateral").classList.remove("aberto");
+    document.getElementById("menuOverlay").classList.remove("ativo");
+}

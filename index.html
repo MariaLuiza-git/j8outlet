@@ -13,7 +13,7 @@
 </head>
 <body>
     <header class="cabecalho">
-        <div class="menu">
+        <div class="menu" onclick="abrirMenu()">
             <i class="fa-solid fa-bars" style="color: rgb(0, 0, 0);"></i>
         </div>
 
@@ -51,6 +51,20 @@
             <i class="fa-solid fa-universal-access" style="color: rgb(0, 0, 0);"></i>
         </div>
     </header>
+
+    <div class="menu-overlay" id="menuOverlay" onclick="fecharMenu()"></div>
+
+    <nav class="menu-lateral" id="menuLateral">
+        <div class="menu-lateral-topo">
+            <span>Categorias</span>
+            <i class="fa-solid fa-xmark" onclick="fecharMenu()"></i>
+        </div>
+        <a href="#">Premier League</a>
+        <a href="#">La Liga</a>
+        <a href="#">Serie A Italia</a>
+        <a href="#">Brasileirão</a>
+        <a href="#">Bundesliga</a>
+    </nav>
 
         <section class="banner">
             <div class="slide active">
