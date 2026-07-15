@@ -351,6 +351,86 @@ body {
     right: 10px;
 }
 
+.rodape {
+    background: #7e7b7b;
+    color: #fff;
+    padding: 50px 30px 20px;
+    margin-top: 40px;
+}
+
+.rodape-colunas {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.rodape-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 150px;
+}
+
+.rodape-coluna h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.rodape-coluna a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.rodape-coluna a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.rodape-redes {
+    display: flex;
+    gap: 15px;
+    font-size: 22px;
+}
+
+.rodape-redes a {
+    color: #fff;
+}
+
+.rodape-pagamento {
+    max-width: 1300px;
+    margin: 30px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.rodape-pagamento span {
+    font-size: 13px;
+    color: #ccc;
+}
+
+.rodape-pagamento-icones {
+    display: flex;
+    gap: 15px;
+    font-size: 26px;
+}
+
+.rodape-copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #555454;
+}
+
 @media (max-width: 768px){
     .cep , .conta {
         gap: 0;
@@ -427,6 +507,13 @@ body {
         width: 32px;
         height: 32px;
         font-size: 14px;
+     }
+     .rodape-colunas {
+        flex-direction: column;
+        gap: 25px;
+     }
+     .rodape {
+        padding: 30px 20px 15px;
      }
  }
 
