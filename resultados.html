@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J8Outlet</title>
+    <title>Resultados da busca</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="fotos/android-chrome-512x512.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
     <link hrel="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <header class="cabecalho">
+     <header class="cabecalho">
         <div class="menu" onclick="abrirMenu()">
             <i class="fa-solid fa-bars" style="color: rgb(0, 0, 0);"></i>
         </div>
@@ -23,13 +23,12 @@
             </a>
         </div>
 
-         <form class="busca">
-                <input type="text" name="q" id="input-busca" placeholder="Buscar">
-                 <button type="submit">
-                    <i class="fa-solid fa-magnifying-glass" style="color: rgb(0, 0, 0);"></i>
-                </button>
-         </form>
-        
+        <div class="busca">
+            <input type="text" name="q" id="input-busca" placeholder="Buscar">
+             <button type="submit"> 
+                <i class="fa-solid fa-magnifying-glass" style="color: rgb(0, 0, 0);"></i>
+            </button>
+        </div>
 
         <div class="cep">
             <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 0);"></i>
@@ -53,104 +52,11 @@
         </div>
     </header>
 
-    <div class="menu-overlay" id="menuOverlay" onclick="fecharMenu()"></div>
+    <main class="resultados-container">
+        <h2 id="titulo-resultados">Resultados da busca</h2>
 
-    <nav class="menu-lateral" id="menuLateral">
-        <div class="menu-lateral-topo">
-            <span>Categorias</span>
-            <i class="fa-solid fa-xmark" onclick="fecharMenu()"></i>
-        </div>
-        <a href="#">Premier League</a>
-        <a href="#">La Liga</a>
-        <a href="#">Serie A Italia</a>
-        <a href="#">Brasileirão</a>
-        <a href="#">Bundesliga</a>
-        <a href="#">Seleções</a>
-        <a href="#">Masculino</a>
-        <a href="#">Feminino</a>
-        <a href="#">Infantil</a>
-        <a href="#">Chuteiras</a>
-        <a href="#">Shorts</a>
-    </nav>
-
-        <section class="banner">
-            <div class="slide active">
-                <img class="banner-img" src="fotos/banner-2.jpg" alt="Vista o estilo que é só seu">
-                <div class="banner-overlay">
-                    <h1>VISTA O ESTILO QUE É SÓ SEU</h1>
-                    <button class="btn-comprar">Comprar</button>
-                </div>
-            </div>
-             
-            <div class="slide">
-                <img class="banner-img" src="fotos/banner-selecaobr.webp" alt="Seleção Brasileira">
-                <div class="banner-overlay">
-                    <h1>SELEÇÃO BRASILEIRA</h1>
-                    <p>PAIXÃO QUE UNE GERAÇÕES</p>
-                    <button class="btn-comprar">Comprar</button>
-                </div>
-            </div>
-
-            <div class="slide">
-                <img class="banner-img" src="fotos/banner-selecoes.webp" alt="Seleções - Copa do Mundo">
-                <div class="banner-overlay">
-                    <h1>CAMISAS SELEÇÕES</h1>
-                    <p>OFERTAS IMPERDIVEÍS</p>
-                    <button class="btn-comprar">Comprar</button>
-                </div>
-            </div>
-
-            <button class="slide-seta anterior" onclick="mudarSlide(-1)">&#10094;</button>
-            <button class="slide-seta proxima" onclick="mudarSlide (1)">&#10095;</button>
-
-            <div class="slide-bolinhas">
-                <span class="bolinha ativa" onclick="irParaSlide(0)"></span>
-                <span class="bolinha" onclick="irParaSlide(1)"></span>
-                <span class="bolinha" onclick="irParaSlide(2)"></span>
-            </div>
-        </section>
-
-        <section class="categorias">
-            <div class="categorias-grid">
-                <a href="#" class="categoria-item">
-                <img src="fotos/premier-png.png" alt="Premier League">
-                <span>Premier League </span>
-                </a>
-
-                <a href="#" class="categoria-item">
-                    <img src="fotos/laliga-png.png" alt="La Liga">
-                    <span>La Liga</span>
-                </a>
-
-                <a href="#" class="categoria-item">
-                    <img src="fotos/italia-png.png" alt="Serie A Italia">
-                    <span>Serie A Itália</span>
-                </a>
-
-                <a href="#" class="categoria-item">
-                    <img src="fotos/brasileirao-png.png" alt="Brasileirão">
-                    <span>Brasileirão</span>
-                </a>
-
-                <a href="#" class="categoria-item">
-                    <img src="fotos/bundesliga-png.png" alt="Bundesliga">
-                    <span>Bundesliga</span>
-                </a>
-            </div>
-        </section>
-
-        <section class="vitrine">
-            <div class="vitrine-header">
-                <h2 class="vitrine-titulo">COPA DO MUNDO 2026</h2>
-                <a href="#" class="vitrine-link"> Compre a coleçao Copa 2026</a>
-            </div>
-
-            <div class="vitrine-carrossel-container">
-                <button class="carrossel-seta anterior" onclick="deslizar('vitrineCarrossel', -1)">&#10094;</button>
-
-                <div class="vitrine-carrossel" id="vitrineCarrossel">
-
-                    <div class="produto-card">
+        <div class="resultados-grid">
+            <div class="produto-card">
                         <img src="fotos/blusa_seleçao1.webp" alt="Camisa Brasil Copa do Mundo 2026 Goleiro">
                         <h3 class="produto-nome">Camisa Brasil Copa do Mundo 2026 Goleiro</h3>
                         <div class="produto-preco">
@@ -213,27 +119,7 @@
                         </div>
                     </div>
 
-                </div>
-
-                <button class="carrossel-seta proxima" onclick="deslizar('vitrineCarrossel', 1)">&#10095;</button>
-
-            </div>
-        </section>
-
-        <section class="vitrine">
-            <div class="vitrine-header">
-                <h2 class="vitrine-titulo">
-                    BRASILEIRÃO
-                </h2>
-                <a href="#" class="vitrine-link">Compre a coleção do Brasileirão</a>
-            </div>
-
-            <div class="vitrine-carrossel-container">
-                <button class="carrossel-seta anterior" onclick="deslizar('carrosselTimes', -1)">&#10094;</button>
-
-                <div class="vitrine-carrossel" id="carrosselTimes">
-
-                    <div class="produto-card">
+                     <div class="produto-card">
                         <img src="fotos/flabarnca-masc.webp" alt="CAMISA FLAMENGO BRANCA MASCULINA">
                         <h3 class="produto-nome">CAMISA FLAMENGO BRANCA MASCULINA</h3>
                         <div class="produto-preco">
@@ -394,24 +280,7 @@
                         </div>
                      </div>
 
-                </div>
-                <button class="carrossel-seta proxima" onclick="deslizar('carrosselTimes', 1)">&#10095;</button>
-            </div>
-
-        </section>
-
-        <section class="vitrine">
-            <div class="vitrine-header">
-                <h2 class="vitrine-titulo">FEMININO</h2>
-                <a href="#" class="vitrine-link">Compre a coleção feminina</a>
-            </div>
-
-             <div class="vitrine-carrossel-container">
-                <button class="carrossel-seta anterior" onclick="deslizar('carrosselFeminino', -1)">&#10094;</button>
-
-                <div class="vitrine-carrossel"              id="carrosselFeminino">
-
-                    <div class="produto-card">
+                      <div class="produto-card">
                         <img src="fotos/corint-fem.webp" alt="Feminina Corinthians 24∕25 Home">
                         <h3 class="produto-nome">Feminina Corinthians 24∕25 Home</h3>
                         <div class="produto-preco">
@@ -593,22 +462,7 @@
                         </div>
                     </div>
 
-                </div>
-                <button class="carrossel-seta proxima" onclick="deslizar('carrosselFeminino', 1)">&#10095;</button>
-            </div>
-        </section>
-
-        <section class="vitrine">
-            <div class="vitrine-header">
-                <h2 class="vitrine-titulo">INFANTIL</h2>
-                <a href="#" class="vitrine-link">Compre a coleção Infantil</a>
-            </div>
-
-            <div class="vitrine-carrossel-container">
-                <button class="carrossel-seta anterior" onclick="deslizar('carrosselInfantil', -1)">&#10094;</button>
-                <div class="vitrine-carrossel" id="carrosselInfantil">
-
-                    <div class="produto-card">
+                     <div class="produto-card">
                         <img src="fotos/conjuntorealmadrid-infantil.webp" alt="Conjunto Infantil Real Madrid Home 23/24 - Branco">
                         <h3 class="produto-nome">Conjunto Infantil Real Madrid Home 23/24 - Branco</h3>
                         <div class="produto-preco">
@@ -689,14 +543,10 @@
                             <span class="preco-info">A PARTIR DE <span class="preco-por">219,90</span></span>
                         </div>
                     </div>
+        </div>
+    </main>
 
-                </div>
-
-                <button class="carrossel-seta proxima" onclick="deslizar('carrosselInfantil',1)">&#10095;</button>
-            </div>
-        </section>
-
-        <footer class="rodape">
+    <footer class="rodape">
             <div class="rodape-colunas">
 
                 <div class="rodape-coluna">
@@ -747,7 +597,7 @@
                 <p>&copy; 2026 J8Outlet. Todos os direitos reservados</p>
             </div>
         </footer>
-    
+
     <script src="script.js"></script>
 </body>
 </html>

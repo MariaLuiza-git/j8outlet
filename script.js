@@ -60,3 +60,47 @@ function fecharMenu() {
     document.getElementById("menuLateral").classList.remove("aberto");
     document.getElementById("menuOverlay").classList.remove("ativo");
 }
+
+const formBusca = document.querySelector('.busca');
+
+if (formBusca) {
+    formBusca.addEventListener('submit', (evento) => {
+        evento.preventDefault();
+
+        const inputBusca = document.getElementById('input-busca');
+        const termo = inputBusca.value.trim();
+
+        if (termo !== '') {
+            window.location.href = `resultados.html?busca=${encodeURIComponent(termo)}`;
+        }
+    });
+}
+const gridResultados =  document.querySelector('.resultados-grid');
+
+if (gridResultados) {
+    const parametros = new URLSearchParams(window.location.search);
+    const termo = (parametros.get('busca') || '').toLowerCase().trim();
+
+    const titulo = document.getElementById('titulo-resultados');
+    if (titulo) {
+        titulo.textContent = `Resultados para: "${termo}"`;
+    }
+
+    const produtosResultado = gridResultados.querySelectorAll('.produto-card');
+    let encontrados = 0;
+
+    produtosResultado.forEach((produto) => {
+        const nome = produto.querySelector('.produto-nome').textContent.toLowerCase();
+
+        if (nome.includes(termo)) {
+            produto.style.display = '';
+            encontrados++;
+        } else {
+            produto.style.display = 'none';
+        }
+    });
+
+    if (encontrados === 0) {
+        gridResultados.insertAdjacentHTML('beforeend', '<p>Nenhum produto encontrado.</p>' );
+    }
+}
