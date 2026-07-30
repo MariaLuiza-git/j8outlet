@@ -515,6 +515,134 @@ body {
     gap: 20px;
 }
 
+.carrinho-pagina {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+}
+
+.carrinho-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.carrinho-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.carrinho-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto auto;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.carrinho-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.carrinho-item-nome {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.carrinho-item-preco {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.carrinho-item-qtd {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.carrinho-item-qtd buttom {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.carrinho-item-qtd button:hover {
+    background: #f0f0f0;
+}
+
+.btn-remover {
+    border: none;
+    background: none;
+    color: #999;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-remover:hover {
+    color: #c00;
+}
+
+.carrinho-resumo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-top: 2px solid #000;
+}
+
+.carrinho-total {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#carrinho-total {
+    font-size: 1.3rem;
+}
+
+.btn-add-carrinho {
+    position: absolute;
+    bottom: 120px;
+    right: 4px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.btn-add-carrinho:hover {
+    background: #eee;
+}
+
+.produto-card {
+    flex: 0 0 auto;
+    width: 220px;
+    scroll-snap-align: start;
+    overflow: hidden;
+    position: relative;
+}
+
 @media (max-width: 768px){
     .cep , .conta {
         gap: 0;
@@ -598,6 +726,31 @@ body {
      }
      .rodape {
         padding: 30px 20px 15px;
+     }
+     .carrinho-pagina {
+        padding: 20px 15px;
+     }
+     .carrinho-item {
+        grid-template-columns: 70px 1fr;
+        grid-template-areas:
+            "img nome"
+            "img preco"
+            "img qtd"
+            "img remover";
+     }
+     .carrinho-item img {
+        grid-area: img;
+        width: 70px;
+        height: 70px;
+     }
+     .carrinho-item-nome { grid-area: nome; }
+     .carrinho-item-preco { grid-area: preco; }
+     .carrinho-item-qtd { grid-area: qtd; }
+     .btn-remover { grid-area: remover; justify-self: start; }
+     .carrinho-resumo {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
      }
  }
 

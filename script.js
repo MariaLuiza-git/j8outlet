@@ -43,7 +43,140 @@ function reiniciarAutoplay() {
     iniciarAutoplay();
 }
 
-iniciarAutoplay();
+if (slides.length > 0) {
+    iniciarAutoplay();
+}
+
+const produtos = [
+  // Copa do Mundo 2026 (vitrineCarrossel)
+  { id: 1, nome: "Camisa Brasil Copa do Mundo 2026 Goleiro", imagem: "fotos/blusa_seleçao1.webp", precoDe: 399.90, precoPor: 199.90, carrossel: "vitrineCarrossel" },
+  { id: 2, nome: "Camisa Brasil Copa do Mundo 2026 Home", imagem: "fotos/blusa_selecao2.webp", precoDe: 499.90, precoPor: 249.90, carrossel: "vitrineCarrossel" },
+  { id: 3, nome: "Camisa Brasil Jogador Copa do Mundo 2026 Home", imagem: "fotos/camisa_selecao3.webp", precoDe: 499.90, precoPor: 299.90, carrossel: "vitrineCarrossel" },
+  { id: 4, nome: "Camisa Brasil Jogador Copa do Mundo 2026 Away", imagem: "fotos/camisa_selecao4.webp", precoDe: 399.90, precoPor: 199.90, carrossel: "vitrineCarrossel" },
+  { id: 5, nome: "Camisa Brasil Feminino Copa do Mundo 2026 Away", imagem: "fotos/camisa_selecao5.webp", precoDe: 399.90, precoPor: 199.90, carrossel: "vitrineCarrossel" },
+  { id: 6, nome: "Infantil Brasil Copa do Mundo 2026 Home", imagem: "fotos/blusa_infantil1.webp", precoDe: 399.90, precoPor: 199.90, carrossel: "vitrineCarrossel" },
+  { id: 7, nome: "Infantil Brasil Copa do Mundo 2026 Goleiro", imagem: "fotos/camisa_infantil2.webp", precoDe: 399.90, precoPor: 199.90, carrossel: "vitrineCarrossel" },
+
+  // Brasileirão (carrosselTimes)
+  { id: 8, nome: "CAMISA FLAMENGO BRANCA MASCULINA", imagem: "fotos/flabarnca-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 9, nome: "CAMISA FLAMENGO MASCULINA", imagem: "fotos/flavermelha-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 10, nome: "CAMISA PALMEIRAS MASCULINA", imagem: "fotos/palmeiras-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 11, nome: "CAMISA CORINTHIANS MASCULINA", imagem: "fotos/corint-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 12, nome: "CAMISA CRUZEIRO MASCULINA", imagem: "fotos/cruzeiro-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 13, nome: "CAMISA ATLÉTICO MINEIRO MASCULINA", imagem: "fotos/cam-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 14, nome: "CAMISA FLUMINENSE MASCULINA", imagem: "fotos/flu-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 15, nome: "CAMISA SÃO PAULO MASCULINA", imagem: "fotos/sp-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 16, nome: "CAMISA VASCO MASCULINA", imagem: "fotos/vasco-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 17, nome: "CAMISA BAHIA MASCULINA", imagem: "fotos/bahia-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 18, nome: "CAMISA BRAGANTINO MASCULINA", imagem: "fotos/bragantino-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 19, nome: "CAMISA FORTALEZA MASCULINA", imagem: "fotos/fortaleza-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 20, nome: "CAMISA CUIABÁ MASCULINA", imagem: "fotos/cuiaba-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+  { id: 21, nome: "CAMISA SANTOS MASCULINA", imagem: "fotos/santos-masc.webp", precoDe: 349.90, precoPor: 159.90, carrossel: "carrosselTimes" },
+
+  // Feminino (carrosselFeminino)
+  { id: 22, nome: "Feminina Corinthians 24/25 Home", imagem: "fotos/corint-fem.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 23, nome: "Camisa Feminina do Vasco da Gama 23/24 Third - Preto", imagem: "fotos/vasco-fem.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 24, nome: "Camisa Flamengo 24/25 Feminino - Branco", imagem: "fotos/flam-fem.avif", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 25, nome: "Camisa Feminina do Palmeiras Home 24/25 - Verde", imagem: "fotos/palmeiras-fem.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 26, nome: "Camisa Corinthians Feminina II 24/25 - Preto", imagem: "fotos/conrin-fem-preta.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 27, nome: "Camisa Feminina Flamengo III 23/24 Adidas - Preto", imagem: "fotos/fla-fem-preta.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 28, nome: "Camisa Feminino Flamengo 25/26 Home", imagem: "fotos/fla-fem-vermelha.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 29, nome: "Camisa Feminina Flamengo Away II 24/25 - Branco", imagem: "fotos/fla-fem-away.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 30, nome: "Camisa Feminina do Palmeiras Away 24/25 - Branca", imagem: "fotos/palmeiras-fem-branca.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 31, nome: "Camisa 23/24 Real Madrid l - Feminino", imagem: "fotos/realmadrid-fem.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 32, nome: "Feminina Cruzeiro 24/25 Home", imagem: "fotos/cruzeiro-fem.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 33, nome: "Feminina Botafogo 24/25 Home", imagem: "fotos/botafogo-fem.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 34, nome: "Feminina Barcelona 24/25 Home", imagem: "fotos/barcelona-fem.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+  { id: 35, nome: "Camisa Brasil Feminino 19/20 Branco", imagem: "fotos/br-branca-fem.webp", precoDe: 289.90, precoPor: 199.90, carrossel: "carrosselFeminino" },
+
+  // Infantil (carrosselInfantil)
+  { id: 36, nome: "Conjunto Infantil Real Madrid Home 23/24 - Branco", imagem: "fotos/conjuntorealmadrid-infantil.webp", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
+  { id: 37, nome: "KIDS SELEÇÃO DE PORTUGAL 2024/25", imagem: "fotos/KitinfantilISelecaodePortugal.webp", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
+  { id: 38, nome: "KIT INFANTIL PALMEIRAS 24/25 HOME - VERDE", imagem: "fotos/kitpalmeiras-infantil.webp", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
+  { id: 39, nome: "Conjunto Infantil Flamengo 24/25 Home", imagem: "fotos/kitflamengo-infantil.webp", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
+  { id: 40, nome: "Conjunto Infantil Vasco L 2024/25", imagem: "fotos/kitvasco-infantil.jpg", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
+  { id: 41, nome: "Conjunto Infantil Seleção Brasil l 24/25", imagem: "fotos/brasil-kids.webp", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
+  { id: 42, nome: "Conjunto Infantil Barcelona Third 23/24 - Azul", imagem: "fotos/kitbarcelona-infantil.webp", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
+  { id: 43, nome: "Kit Infantil Real Madrid ll 2023/24", imagem: "fotos/kitrealmadridpreta-infatil.webp", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
+  { id: 44, nome: "Kids Barcelona ll 2024/25", imagem: "fotos/kitbarcelonapreta-infantil.webp", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
+];
+
+function criarCardProduto(produto) {
+    return `
+        <div class="produto-card">
+            <img src="${produto.imagem}" alt="${produto.nome}">
+            <h3 class="produto-nome">${produto.nome}</h3>
+            <div class="produto-preco">
+                <span class="preco-de">R$ ${produto.precoDe.toFixed(2).replace('.','.')}</span>
+                <span class="preco-info">A PARTIR DE <span class="preco-por">R$ ${produto.precoPor.toFixed(2).replace('.', ',')}</span></span>
+        </div>
+        <button class="btn-add-carrinho" data-id="${produto.id}">
+    <i class="fa-solid fa-cart-plus"></i>
+</button>
+    </div>
+     `;
+}
+
+function renderizarProdutos() {
+  const carrosseis = ["vitrineCarrossel", "carrosselTimes", "carrosselFeminino", "carrosselInfantil"];
+
+  carrosseis.forEach(function(idCarrossel) {
+    const container = document.getElementById(idCarrossel);
+    if (!container) return;
+
+    const produtosDoCarrossel = produtos.filter(function(produto) {
+      return produto.carrossel === idCarrossel;
+    });
+
+    container.innerHTML = produtosDoCarrossel.map(criarCardProduto).join('');
+  });
+}
+
+document.addEventListener('click', function(evento) {
+    const id= Number(evento.target.dataset.id);
+
+    if (evento.target.classList.contains('btn-aumentar')) {
+        alterarQuantidade(id, 1);
+    }
+
+    if (evento.target.classList.contains('btn-diminuir')) {
+        alterarQuantidade(id, -1);
+    }
+
+    if (evento.target.classList.contains('btn-remover')) {
+        removerDoCarrinho(id);
+    }
+});
+
+function alterarQuantidade(id, delta){
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const item = carrinho.find(function(p) {
+        return p.id === id;
+    });
+
+    if (!item) return;
+
+    item.quantidade += delta;
+
+    if (item.quantidade <= 0) {
+        carrinho = carrinho.filter(function(p) {
+            return p.id !== id;
+        });
+    }
+
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    renderizarCarrinho();
+}
+
+function removerDoCarrinho(id) {
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    carrinho = carrinho.filter(function(p) {
+        return p.id !== id;
+    });
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    renderizarCarrinho();
+}
 
 function deslizar(id, direcao) {
     const carrossel = document.getElementById(id);
@@ -104,3 +237,79 @@ if (gridResultados) {
         gridResultados.insertAdjacentHTML('beforeend', '<p>Nenhum produto encontrado.</p>' );
     }
 }
+
+renderizarProdutos();
+
+function adicionarAoCarrinho(idProduto){
+    const produto = produtos.find(function(p) {
+        return p.id === idProduto;
+    });
+
+    if (!produto) return;
+
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    const itemExistente = carrinho.find(function(item) {
+        return item.id === idProduto;
+    
+    });
+
+    if (itemExistente) {
+        itemExistente.quantidade += 1;
+    } else {
+        carrinho.push ({
+            id: produto.id,
+            nome: produto.nome,
+            imagem: produto.imagem,
+            preco: produto.precoPor,
+            quantidade: 1
+        });
+    }
+
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert(produto.nome + " Foi adicionado ao carrinho!");
+}
+
+document.addEventListener('click', function(evento) {
+    if (evento.target.classList.contains ('btn-add-carrinho')) {
+        const idProduto = Number (evento.target.dataset.id);
+        adicionarAoCarrinho(idProduto);
+    }
+});
+
+function renderizarCarrinho() {
+  const listaEl = document.getElementById('carrinhoLista');
+  if (!listaEl) return; // só roda na página do carrinho
+
+  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+  if (carrinho.length === 0) {
+    listaEl.innerHTML = '<p>Seu carrinho está vazio.</p>';
+    document.getElementById('carrinhoTotal').textContent = 'R$ 0,00';
+    return;
+  }
+
+  listaEl.innerHTML = carrinho.map(function(item) {
+    return `
+      <div class="carrinho-item" data-id="${item.id}">
+        <img src="${item.imagem}" alt="${item.nome}">
+        <span class="carrinho-item-nome">${item.nome}</span>
+        <span class="carrinho-item-preco">R$ ${item.preco.toFixed(2).replace('.', ',')}</span>
+        <div class="carrinho-item-qtd">
+          <button class="btn-diminuir" data-id="${item.id}">-</button>
+          <span>${item.quantidade}</span>
+          <button class="btn-aumentar" data-id="${item.id}">+</button>
+        </div>
+        <button class="btn-remover" data-id="${item.id}">Remover</button>
+      </div>
+    `;
+  }).join('');
+
+  const total = carrinho.reduce(function(soma, item) {
+    return soma + (item.preco * item.quantidade);
+  }, 0);
+
+  document.getElementById('carrinhoTotal').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+}
+
+renderizarCarrinho();
