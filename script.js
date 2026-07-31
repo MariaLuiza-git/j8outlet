@@ -101,6 +101,21 @@ const produtos = [
   { id: 44, nome: "Kids Barcelona ll 2024/25", imagem: "fotos/kitbarcelonapreta-infantil.webp", precoDe: 399.90, precoPor: 219.90, carrossel: "carrosselInfantil" },
 ];
 
+function renderizarProdutos() {
+  const carrosseis = ["vitrineCarrossel", "carrosselTimes", "carrosselFeminino", "carrosselInfantil"];
+
+  carrosseis.forEach(function(idCarrossel) {
+    const container = document.getElementById(idCarrossel);
+    if (!container) return;
+
+    const produtosDoCarrossel = produtos.filter(function(produto) {
+      return produto.carrossel === idCarrossel;
+    });
+
+    container.innerHTML = produtosDoCarrossel.map(criarCardProduto).join('');
+  });
+}
+
 function criarCardProduto(produto) {
     return `
         <div class="produto-card">
@@ -117,34 +132,109 @@ function criarCardProduto(produto) {
      `;
 }
 
-function renderizarProdutos() {
-  const carrosseis = ["vitrineCarrossel", "carrosselTimes", "carrosselFeminino", "carrosselInfantil"];
-
-  carrosseis.forEach(function(idCarrossel) {
-    const container = document.getElementById(idCarrossel);
+function renderizarProduto() {
+    const container = document.getElementById('produtoPagina');
     if (!container) return;
 
-    const produtosDoCarrossel = produtos.filter(function(produto) {
-      return produto.carrossel === idCarrossel;
+    const parametros = new URLSearchParams(window.location.search);
+    const idProduto = Number(parametros.get('id'));
+
+    const produto = produtos.find(function(p) {
+        return p.id === idProduto;
     });
 
-    container.innerHTML = produtosDoCarrossel.map(criarCardProduto).join('');
-  });
+    if (!produto) {
+        container.innerHTML = '<p>Produto não encontrado.</p>';
+        return;
+    }
+
+    const tamanhos = ["P", "M", "G", "GG", "2GG", "4GG"];
+
+    container.innerHTML = `
+    <div class="produto-detalhe">
+      <img src="${produto.imagem}" alt="${produto.nome}" class="produto-detalhe-img">
+      <div class="produto-detalhe-info">
+        <h1 class="produto-detalhe-nome">${produto.nome}</h1>
+        <div class="produto-detalhe-preco">
+          <span class="preco-de">R$ ${produto.precoDe.toFixed(2).replace('.', ',')}</span>
+          <span class="preco-por">R$ ${produto.precoPor.toFixed(2).replace('.', ',')}</span>
+        </div>
+
+        <div class="produto-detalhe-tamanho">
+          <span class="tamanho-label">TAMANHO: <span id="tamanhoSelecionado">${tamanhos[0]}</span></span>
+          <div class="tamanho-opcoes">
+            ${tamanhos.map(function(tam, index) {
+                return `<button class="btn-tamanho${index === 0 ? ' ativo' : ''}" data-tamanho="${tam}">${tam}</button>`;
+            }).join('')}
+          </div>
+        </div>
+
+        <div class="produto-detalhe-acoes">
+          <div class="quantidade-seletor">
+            <button class="btn-qtd-diminuir">-</button>
+            <span id="qtdSelecionada">1</span>
+            <button class="btn-qtd-aumentar">+</button>
+          </div>
+          <button class="btn-add-carrinho-detalhe" data-id="${produto.id}">
+            ADICIONAR AO CARRINHO
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 document.addEventListener('click', function(evento) {
-    const id= Number(evento.target.dataset.id);
 
-    if (evento.target.classList.contains('btn-aumentar')) {
-        alterarQuantidade(id, 1);
+    const botaoTamanho = evento.target.closest('.btn-tamanho');
+    if (botaoTamanho) {
+        document.querySelectorAll('.btn-tamanho').forEach(function(btn) {
+            btn.classList.remove('ativo');
+        });
+        botaoTamanho.classList.add('ativo');
+        document.getElementById('tamanhoSelecionado').textContent = botaoTamanho.dataset.tamanho;
+        return;
     }
 
-    if (evento.target.classList.contains('btn-diminuir')) {
-        alterarQuantidade(id, -1);
+    const botaoQtdMais = evento.target.closest('.btn-qtd-aumentar');
+    if (botaoQtdMais) {
+        const span = document.getElementById('qtdSelecionada');
+        span.textContent = Number(span.textContent) + 1;
+        return;
     }
 
-    if (evento.target.classList.contains('btn-remover')) {
-        removerDoCarrinho(id);
+    const botaoQtdMenos = evento.target.closest('.btn-qtd-diminuir');
+    if (botaoQtdMenos) {
+        const span = document.getElementById('qtdSelecionada');
+        const atual = Number(span.textContent);
+        if (atual > 1) span.textContent = atual - 1;
+        return;
+    }
+
+    const botaoAdd = evento.target.closest('.btn-add-carrinho, .btn-add-carrinho-detalhe');
+    if (botaoAdd) {
+        const qtdE1 = document.getElementById('qtdSelecionada');
+        const quantidade = qtdE1 ? Number (qtdE1.textContent) : 1;
+        adicionarAoCarrinho(Number(botaoAdd.dataset.id), quantidade);
+        return;
+    }
+
+    const botaoAumentar = evento.target.closest('.btn-aumentar');
+    if (botaoAumentar) {
+        alterarQuantidade(Number(botaoAumentar.dataset.id), 1);
+        return;
+    }
+
+   const botaoDiminuir = evento.target.closest('.btn-diminuir');
+   if (botaoDiminuir) {
+    alterarQuantidade(Number(botaoDiminuir.dataset.id), -1);
+    return;
+   }
+
+    const botaoRemover = evento.target.closest('.btn-remover');
+    if (botaoRemover) {
+        removerDoCarrinho(Number(botaoRemover.dataset.id));
+        return;
     }
 });
 
@@ -240,7 +330,10 @@ if (gridResultados) {
 
 renderizarProdutos();
 
-function adicionarAoCarrinho(idProduto){
+function adicionarAoCarrinho(idProduto, quantidade){
+    quantidade = quantidade || 1;
+
+
     const produto = produtos.find(function(p) {
         return p.id === idProduto;
     });
@@ -255,7 +348,7 @@ function adicionarAoCarrinho(idProduto){
     });
 
     if (itemExistente) {
-        itemExistente.quantidade += 1;
+        itemExistente.quantidade += quantidade;
     } else {
         carrinho.push ({
             id: produto.id,
@@ -270,12 +363,6 @@ function adicionarAoCarrinho(idProduto){
     alert(produto.nome + " Foi adicionado ao carrinho!");
 }
 
-document.addEventListener('click', function(evento) {
-    if (evento.target.classList.contains ('btn-add-carrinho')) {
-        const idProduto = Number (evento.target.dataset.id);
-        adicionarAoCarrinho(idProduto);
-    }
-});
 
 function renderizarCarrinho() {
   const listaEl = document.getElementById('carrinhoLista');
@@ -313,3 +400,5 @@ function renderizarCarrinho() {
 }
 
 renderizarCarrinho();
+
+renderizarProduto();
