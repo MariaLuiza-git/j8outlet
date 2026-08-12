@@ -119,12 +119,14 @@ function renderizarProdutos() {
 function criarCardProduto(produto) {
     return `
         <div class="produto-card">
-            <img src="${produto.imagem}" alt="${produto.nome}">
-            <h3 class="produto-nome">${produto.nome}</h3>
-            <div class="produto-preco">
-                <span class="preco-de">R$ ${produto.precoDe.toFixed(2).replace('.','.')}</span>
-                <span class="preco-info">A PARTIR DE <span class="preco-por">R$ ${produto.precoPor.toFixed(2).replace('.', ',')}</span></span>
-        </div>
+            <a href="produto.html?id=${produto.id}" class="produto-card-link">
+                <img src="${produto.imagem}" alt="${produto.nome}">
+                <h3 class="produto-nome">${produto.nome}</h3>
+                <div class="produto-preco">
+                    <span class="preco-de">R$ ${produto.precoDe.toFixed(2).replace('.',',')}</span>
+                    <span class="preco-info">A PARTIR DE <span class="preco-por">R$ ${produto.precoPor.toFixed(2).replace('.', ',')}</span></span>
+                        </div>
+            </a>
         <button class="btn-add-carrinho" data-id="${produto.id}">
     <i class="fa-solid fa-cart-plus"></i>
 </button>
@@ -175,9 +177,32 @@ function renderizarProduto() {
             <span id="qtdSelecionada">1</span>
             <button class="btn-qtd-aumentar">+</button>
           </div>
+         </div> 
+
+          <button class="btn-comprar-agora" data-id="${produto.id}">
+            COMPRAR AGORA
+        </button>
           <button class="btn-add-carrinho-detalhe" data-id="${produto.id}">
             ADICIONAR AO CARRINHO
           </button>
+
+          <div class="produto-frete">
+            <h3 class="frete-titulo"> Consulte o Frete</h3>
+            <div class="frete-opcoes">
+            <button class="frete-opcao ativa" data-tipo="casa">
+            <i class="fa-solid fa-truck"></i>
+            <span>Receba em Casa </span>
+            </button>         
+            <button class="frete-opcao" data-tipo="loja">
+            <i class="fa-solid fa-shop"></i>
+            <span>Retire em Loja </span>
+            </button>
+           </div>
+           <div class="frete-cep">
+           <input type="text" id="inputCep" placeholder="Digite o CEP" maxlength="9">
+           <button id ="btnCalcularFrete">Calcular</button>
+           </div>
+           <a href="#" class="frete-nao-sei">Não sei meu CEP</a>
         </div>
       </div>
     </div>

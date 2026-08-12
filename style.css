@@ -643,6 +643,12 @@ body {
     position: relative;
 }
 
+.produto-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .produto-detalhe {
     display: flex;
     gap: 40px;
@@ -827,6 +833,141 @@ body {
 .btn-add-carrinho-detalhe {
     padding: 14px 40px;
     font-size: 15px;
+}
+
+.btn-comprar-agora {
+    width: 100%;
+    height: 52px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.btn-comprar-agora:hover {
+    background: #333;
+}
+
+.btn-add-carrinho-detalhe {
+    width: 100%;
+    height: 52px;
+    background: #fff;
+    color:#000;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.btn-add-carrinho-detalhe:hover {
+    background: #f5f5f5;
+}
+
+.produto-frete {
+    margin-top: 10px;
+}
+
+.frete-titulo {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    text-transform: none;
+}
+
+.frete-opcoes {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.frete-opcao {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: center;
+    appearance: none;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.frete-opcao i {
+    font-size: 20px;
+}
+
+.frete-opcao span {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.frete-opcao.ativa {
+    border: 2px solid #000;
+}
+
+.frete-cep {
+    display: flex;
+    height: 44px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.frete-cep input {
+    flex: 1;
+    border: none;
+    padding: 0 15px;
+    font-size: 13px;
+    background: #fff;
+    text-transform: none;
+    font-family: inherit;
+}
+
+.frete-cep input::placeholder {
+    text-transform: none;
+    color: #999;
+}
+
+.frete-cep button {
+    border: none;
+    border-left: 1px solid #ccc;
+    background: #000;
+    color: #fff;
+    padding: 0 22px;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.frete-cep button:hover {
+    background: #333;
+}
+
+.frete-nao-sei {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #000;
+    text-decoration: underline;
+    text-transform: none;
 }
 
 @media (max-width: 768px){
