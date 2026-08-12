@@ -70,6 +70,16 @@
     cursor: pointer;
 }
 
+.conta {
+    text-decoration: none;
+    color: #000;
+}
+
+.conta a {
+    text-decoration: none;
+    color: #000;
+}
+
 .cep, .conta {
     display: flex;
     align-items: center;
@@ -77,6 +87,7 @@
     font-size: 12px;
     cursor: pointer;
     white-space: nowrap;
+    
 }
 
 .cep i, .conta i {
