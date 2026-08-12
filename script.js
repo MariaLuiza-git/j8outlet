@@ -261,6 +261,30 @@ document.addEventListener('click', function(evento) {
         removerDoCarrinho(Number(botaoRemover.dataset.id));
         return;
     }
+
+    const botaoOlho = evento.target.closest('.toggle-senha');
+    if (botaoOlho) {
+        const input = document.getElementById(botaoOlho.dataset.alvo);
+        if (input.type === 'password') {
+            input.type = 'text';
+            botaoOlho.classList.remove('fa-eye');
+            botaoOlho.classList.add('fa-eye-slash');
+            botaoOlho.classList.add('ativo');
+        } else {
+            input.type = 'password';
+            botaoOlho.classList.remove('fa-eye-slash');
+            botaoOlho.classList.add('fa-eye');
+            botaoOlho.classList.remove('ativo');
+        }
+        return;
+    }
+
+    const linkEsqueciSenha = evento.target.closest('.link-esqueci-senha');
+    if (linkEsqueciSenha) {
+        evento.preventDefault();
+        alert('Em breve você poderá recuperar sua senha por aqui!');
+        return;
+    }
 });
 
 function alterarQuantidade(id, delta){

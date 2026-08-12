@@ -970,7 +970,196 @@ body {
     text-transform: none;
 }
 
+.conta-pagina {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    min-height: 60vh;
+}
+
+.conta-caixa {
+    width: 100%;
+    max-width: 460px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.conta-abas {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.conta-aba {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 0 0 16px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #999;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.conta-aba.ativa {
+    color: #000;
+    border-bottom: 2px solid #000;
+}
+
+.conta-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.conta-form label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    margin-top: 16px;
+}
+
+.conta-form label:first-of-type {
+    margin-top: 0;
+}
+
+.conta-form input {
+    height: 46px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0 14px;
+    font-size: 14px;
+    font-family: inherit;
+    text-transform: none;
+    box-sizing: border-box;
+}
+
+.conta-form input::placeholder {
+    text-transform: none;
+    color: #aaa;
+}
+
+.conta-form input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.conta-erro {
+    color: #c00;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: none;
+    margin: 10px 0 0;
+    min-height: 14px;
+}
+
+.btn-conta-enviar {
+    height: 50px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-top: 24px;
+}
+
+.btn-conta-enviar:hover {
+    background: #333;
+}
+
+.conta-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.conta-subtitulo {
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    text-transform: none;
+    margin-bottom: 30px;
+}
+
+.btn-conta-sair {
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.btn-conta-sair:hover {
+    background: #f5f5f5;
+}
+
+.campo-senha {
+    position: relative;
+    display: flex;
+}
+
+.campo-senha input {
+    width: 100%;
+    padding-right: 42px;
+}
+
+.toggle-senha {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.toggle-senha:hover {
+    color: #000;
+}
+
+.toggle-senha.ativo {
+    color: #000;
+}
+
+.link-esqueci-senha {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: #000;
+    text-decoration: underline;
+    text-transform: none;
+    margin-top: 8px;
+}
+
+.link-esqueci-senha:hover {
+    color: #666;
+}
+
+
 @media (max-width: 768px){
+     .conta-pagina {
+        padding: 30px 15px;
+    }
+
+    .conta-caixa {
+        padding: 25px;
+    }
+
     .cep , .conta {
         gap: 0;
     }
