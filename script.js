@@ -415,7 +415,7 @@ function adicionarAoCarrinho(idProduto, quantidade){
 
 function renderizarCarrinho() {
   const listaEl = document.getElementById('carrinhoLista');
-  if (!listaEl) return; // só roda na página do carrinho
+  if (!listaEl) return; 
 
   let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
@@ -446,6 +446,180 @@ function renderizarCarrinho() {
   }, 0);
 
   document.getElementById('carrinhoTotal').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+}
+
+const conteudoAbas = document.querySelectorAll('.conta-aba');
+
+if (conteudoAbas.length > 0) {
+    conteudoAbas.forEach(function(aba) {
+        aba.addEventListener('click', function() {
+            conteudoAbas.forEach(function(a) {
+                a.classList.remove('ativa');
+            });
+            aba.classList.add('ativa');
+
+            if(aba.dataset.aba === 'login') {
+                document.getElementById('formLogin').style.display = 'flex';
+                document.getElementById('formCadastro').style.display = 'none';
+            } else {
+                document.getElementById('formLogin').style.display = 'none';
+                document.getElementById('formCadastro').style.display = 'flex';
+            }
+        });
+    });
+}
+
+const inputCpf = document.getElementById('cadCpf');
+
+ if (inputCpf) {
+    inputCpf.addEventListener('input', function() {
+        let valor = inputCpf.value.replace(/\D/g, '');
+        valor = valor.slice(0, 11);
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        inputCpf.value = valor;
+    });
+ }
+
+ const inputTelefone = document.getElementById('cadTelefone');
+
+ if (inputTelefone) {
+    inputTelefone.addEventListener('input', function() {
+        let valor = inputTelefone.value.replace(/\D/g, '');
+        valor = valor.slice(0, 11);
+        valor = valor.replace(/(\d{2})(\d)/, '($1) $2');
+        valor = valor.replace(/(\d{5})(\d{1,4})$/, '$1-$2');
+        inputTelefone.value = valor;
+    });
+ }
+
+ const formCadastro = document.getElementById('formCadastro');
+
+if (formCadastro) {
+    formCadastro.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        const erroEl = document.getElementById('cadastroErro');
+        erroEl.textContent = '';
+
+        const nome = document.getElementById('cadNome').value.trim();
+        const email = document.getElementById('cadEmail').value.trim().toLowerCase();
+        const cpf = document.getElementById('cadCpf').value.trim();
+        const telefone = document.getElementById('cadTelefone').value.trim();
+        const senha = document.getElementById('cadSenha').value;
+        const senhaConfirma = document.getElementById('cadSenhaConfirma').value;
+
+        if (senha.length < 6) {
+            erroEl.textContent = 'A senha precisa ter no mínimo 6 caracteres.';
+            return;
+        }
+
+        if (senha !== senhaConfirma) {
+            erroEl.textContent = 'As senhas não coincidem.';
+            return;
+        }
+
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        const emailJaExiste = usuarios.find(function(u) {
+            return u.email === email;
+        });
+
+        if (emailJaExiste) {
+            erroEl.textContent = 'Este e-mail já está cadastrado.';
+            return;
+        }
+
+        const novoUsuario = {
+            nome: nome,
+            email: email,
+            cpf: cpf,
+            telefone: telefone,
+            senha: senha
+        };
+
+        usuarios.push(novoUsuario);
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+        localStorage.setItem('usuarioLogado', JSON.stringify(novoUsuario));
+
+        atualizarCabecalhoConta();
+        mostrarAreaLogado();
+    });
+}
+
+const formLogin = document.getElementById('formLogin');
+
+if (formLogin) {
+    formLogin.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        const erroEl = document.getElementById('loginErro');
+        erroEl.textContent = '';
+
+        const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+        const senha = document.getElementById('loginSenha').value;
+
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        const usuario = usuarios.find(function(u) {
+            return u.email === email && u.senha === senha;
+        });
+
+        if (!usuario) {
+            erroEl.textContent = 'E-mail ou senha incorretos.';
+            return;
+        }
+
+        localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+
+        atualizarCabecalhoConta();
+        mostrarAreaLogado();
+    });
+}
+
+function mostrarAreaLogado() {
+    const areaDeslogado = document.getElementById('areaDeslogado');
+    const areaLogado = document.getElementById('areaLogado');
+
+    if (!areaDeslogado || !areaLogado) return;
+
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+    if (!usuarioLogado) return;
+
+    areaDeslogado.style.display = 'none';
+    areaLogado.style.display = 'block';
+
+    document.getElementById('nomeUsuarioLogado').textContent = usuarioLogado.nome;
+    document.getElementById('emailUsuarioLogado').textContent = usuarioLogado.email;
+}
+
+function atualizarCabecalhoConta() {
+    const contaHeaderTexto = document.getElementById('contaHeaderTexto');
+    if (!contaHeaderTexto) return;
+
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+    if (usuarioLogado) {
+        const primeiroNome = usuarioLogado.nome.split(' ')[0];
+        contaHeaderTexto.textContent = 'Olá, ' + primeiroNome;
+    } else {
+        contaHeaderTexto.textContent = 'Entre ou cadastra-se';
+    }
+}
+
+atualizarCabecalhoConta();
+mostrarAreaLogado();
+
+const botaoSair = document.getElementById('btnSair');
+
+if (botaoSair) {
+    botaoSair.addEventListener('click', function() {
+        localStorage.removeItem('usuarioLogado');
+        window.location.reload();
+    });
 }
 
 renderizarCarrinho();
