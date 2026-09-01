@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Conta</title>
+    <title>J8Outlet - Meus Pedidos</title>
     <link rel="icon" href="fotos/android-chrome-512x512.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 </head>
 <body>
     <header class="cabecalho">
         <div class="menu" onclick="abrirMenu()">
-            <i class="fa-solid fa-bars> <style="color: rgb(0, 0, 0);"></style></i>
+            <i class="fa-solid fa-bars" style="color: rgb(0, 0, 0);"></i>
         </div>
 
-         <div class="logo">
+        <div class="logo">
             <a href="index.html">
                 <img src="https://cdn.offstoreimages.me/compressed/a9ca6ca704ed7659ea2e482198a7759c.webp" alt="Logo">
             </a>
@@ -31,7 +30,7 @@
             </button>
         </form>
 
-         <div class="cep">
+        <div class="cep">
             <i class="fa-solid fa-location-dot" style="color: rgb(0, 0, 0);"></i>
             <span>Informe seu CEP</span>
         </div>
@@ -50,7 +49,7 @@
         </div>
     </header>
 
-     <div class="menu-overlay" id="menuOverlay" onclick="fecharMenu()"></div>
+    <div class="menu-overlay" id="menuOverlay" onclick="fecharMenu()"></div>
 
     <nav class="menu-lateral" id="menuLateral">
         <div class="menu-lateral-topo">
@@ -70,83 +69,25 @@
         <a href="#">Shorts</a>
     </nav>
 
-     <section class="conta-pagina" id="contaPagina">
-
-        <div class="conta-caixa" id="areaDeslogado">
-            <div class="conta-abas">
-                <button class="conta-aba ativa" data-aba="login">Entrar</button>
-                <button class="conta-aba" data-aba="cadastro">Cadastrar-se</button>
-            </div>
-
-            <form class="conta-form" id="formLogin">
-                <label for="loginEmail">E-mail</label>
-                <input type="email" id="loginEmail" placeholder="seuemail@exemplo.com" required>
-
-                <label for="loginSenha">Senha</label>
-                <div class="campo-senha">
-                    <input type="password" id="loginSenha" placeholder="Sua senha" required>
-                    <i class="fa-solid fa-eye toggle-senha" data-alvo="loginSenha"></i>
-                </div>
-
-                <a href="#" class="link-esqueci-senha">Esqueci minha senha</a>
-
-                <p class="conta-erro" id="loginErro"></p>
-
-                <button type="submit" class="btn-conta-enviar">ENTRAR</button>
-            </form>
-
-             <form class="conta-form" id="formCadastro" style="display: none;">
-                <label for="cadNome">Nome completo</label>
-                <input type="text" id="cadNome" placeholder="Seu nome completo" required>
-
-                <label for="cadEmail">E-mail</label>
-                <input type="email" id="cadEmail" placeholder="seuemail@exemplo.com" required>
-
-                <label for="cadCpf">CPF</label>
-                <input type="text" id="cadCpf" placeholder="000.000.000-00" maxlength="14" required>
-
-                <label for="cadTelefone">Telefone</label>
-                <input type="text" id="cadTelefone" placeholder="(00) 00000-0000" maxlength="15" required>
-
-                <label for="cadSenha">Senha</label>
-                <div class="campo-senha">
-                    <input type="password" id="cadSenha" placeholder="Crie uma senha (mín. 6 caracteres)" required>
-                    <i class="fa-solid  fa-eye toggle-senha" data-alvo="cadSenha"></i>
-                </div>
-
-                 <label for="cadSenhaConfirma">Confirmar senha</label>
-                <div class="campo-senha">
-                    <input type="password" id="cadSenhaConfirma" placeholder="Repita a senha" required>
-                    <i class="fa-solid fa-eye toggle-senha" data-alvo="cadSenhaConfirma"></i>
-                </div>
-
-                <p class="conta-erro" id="cadastroErro"></p>
-
-                <button type="submit" class="btn-conta-enviar">CRIAR CONTA</button>
-            </form>
+    <section class="conta-pagina">
+        <div class="conta-caixa" id="areaSemLogin" style="display: none;">
+            <p class="conta-subtitulo">Você precisa estar logado para ver essa página.</p>
+            <a href="conta.html" class="btn-conta-enviar" style="display: block; text-align: center; text-decoration: none; line-height: 50px;">IR PARA LOGIN</a>
         </div>
 
-        <div class="conta-caixa" id="areaLogado" style="display: none;">
-            <h2 class="conta-titulo">Olá, <span id="nomeUsuarioLogado"></span>!</h2>
-            <p class="conta-subtitulo">Você está conectado com o e-mail <span id="emailUsuarioLogado"></span></p>
-
-            <div class="conta-atalhos">
-                <a href="perfil.html" class="conta-atalho">
-                    <i class="fa-solid fa-user-pen"></i>
-                    <span> Meus Dados </span>
-                </a>
-                <a href="pedidos.html" class="conta-atalho">
-                    <i class="fa-solid fa-box"></i>
-                    <span>Meus Pedidos</span>
-                </a>
+        <div class="conta-caixa conta-caixa-larga" id="areaPedidos">
+            <div class="conta-menu-abas">
+                <a href="perfil.html" class="conta-menu-item">Meus Dados</a>
+                <a href="pedidos.html" class="conta-menu-item ativo">Meus Pedidos</a>
             </div>
 
-            <button class="btn-conta-sair" id="btnSair">SAIR DA CONTA</button>
+            <h2 class="conta-titulo conta-titulo-esquerda">Meus Pedidos</h2>
+
+            <div id="listaPedidos"></div>
         </div>
+    </section>
 
-     </section>
-
-         <footer class="rodape">
+    <footer class="rodape">
         <div class="rodape-colunas">
             <div class="rodape-coluna">
                 <h4>Institucional</h4>
@@ -167,7 +108,7 @@
             <div class="rodape-coluna">
                 <h4>Minha conta</h4>
                 <a href="conta.html">Entrar</a>
-                <a href="#">Meus pedidos</a>
+                <a href="pedidos.html">Meus pedidos</a>
                 <a href="#">Lista de favoritos</a>
             </div>
 
@@ -182,7 +123,7 @@
             </div>
         </div>
 
-         <div class="rodape-pagamento">
+        <div class="rodape-pagamento">
             <span>Formas de pagamento</span>
             <div class="rodape-pagamento-icones">
                 <i class="fa-brands fa-cc-visa" style="color: rgb(0, 0, 0);"></i>
@@ -198,6 +139,5 @@
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>

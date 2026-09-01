@@ -622,6 +622,93 @@ if (botaoSair) {
     });
 }
 
+function carregarPerfil() {
+    const areaSemLogin = document.getElementById('areaSemLogin');
+    const areaPerfil = document.getElementById('areaPerfil');
+    if (!areaPerfil) return; 
+
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+    if (!usuarioLogado) {
+        areaSemLogin.style.display = 'block';
+        areaPerfil.style.display = 'none';
+        return;
+    }
+
+    areaSemLogin.style.display = 'none';
+    areaPerfil.style.display = 'block';
+
+    document.getElementById('perfilNome').value = usuarioLogado.nome;
+    document.getElementById('perfilEmail').value = usuarioLogado.email;
+    document.getElementById('perfilCpf').value = usuarioLogado.cpf;
+    document.getElementById('perfilTelefone').value = usuarioLogado.telefone;
+}
+
+carregarPerfil();
+
+const inputPerfilCpf = document.getElementById('perfilCpf');
+
+if (inputPerfilCpf) {
+    inputPerfilCpf.addEventListener('input', function() {
+        let valor = inputPerfilCpf.value.replace(/\D/g, '');
+        valor = valor.slice(0, 11);
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        inputPerfilCpf.value = valor;
+    });
+}
+
+const inputPerfilTelefone = document.getElementById('perfilTelefone');
+
+if (inputPerfilTelefone) {
+    inputPerfilTelefone.addEventListener('input', function() {
+        let valor = inputPerfilTelefone.value.replace(/\D/g, '');
+        valor = valor.slice(0, 11);
+        valor = valor.replace(/(\d{2})(\d)/, '($1) $2');
+        valor = valor.replace(/(\d{5})(\d{1,4})$/, '$1-$2');
+        inputPerfilTelefone.value = valor;
+    });
+}
+
+const formPerfil = document.getElementById('formPerfil');
+
+if (formPerfil) {
+    formPerfil.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        const sucessoEl = document.getElementById('perfilSucesso');
+        sucessoEl.textContent = '';
+
+        const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+        if (!usuarioLogado) return;
+
+        const nome = document.getElementById('perfilNome').value.trim();
+        const email = document.getElementById('perfilEmail').value.trim().toLowerCase();
+        const cpf = document.getElementById('perfilCpf').value.trim();
+        const telefone = document.getElementById('perfilTelefone').value.trim();
+
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        const index = usuarios.findIndex(function(u) {
+            return u.email === usuarioLogado.email;
+        });
+
+        if (index === -1) return;
+
+        usuarios[index].nome = nome;
+        usuarios[index].email = email;
+        usuarios[index].cpf = cpf;
+        usuarios[index].telefone = telefone;
+
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        localStorage.setItem('usuarioLogado', JSON.stringify(usuarios[index]));
+
+        atualizarCabecalhoConta();
+        sucessoEl.textContent = 'Dados atualizados com sucesso!';
+    });
+}
+
 renderizarCarrinho();
 
 renderizarProduto();

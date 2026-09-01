@@ -1161,6 +1161,81 @@ body {
     color: #666;
 }
 
+.conta-caixa-larga { 
+    max-width: 600px;
+}
+
+.conta-menu-abas {
+    display: flex;
+    gap: 25px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+    padding-bottom: 16px;
+}
+
+.conta-menu-item {
+    text-decoration: none;
+    color: #999;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.conta-menu-item:hover {
+    color: #000;
+}
+
+.conta-menu-item.ativo {
+    color: #000;
+}
+
+.conta-titulo-esquerda {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.conta-sucesso {
+    color: #1a7d1a;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: none;
+    margin: 10px 0 0;
+    min-height: 14px;
+}
+
+.conta-atalhos {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.conta-atalho {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #000;
+}
+
+.conta-atalho:hover {
+    border-color: #000;
+    background: #f9f9f9;
+}
+
+.conta-atalho i {
+    font-size: 20px;
+}
+
+.conta-atalho span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
 
 @media (max-width: 768px){
      .conta-pagina {
