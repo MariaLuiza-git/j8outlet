@@ -1262,6 +1262,9 @@ body {
      .conta i.fa-user {
         display: none;
      }
+     .conta i.fa-user {
+    display: inline-block;
+}
      .cabecalho {
         gap: 10px;
         padding: 8px 6px;
