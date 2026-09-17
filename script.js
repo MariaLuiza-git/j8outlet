@@ -745,11 +745,55 @@ function comprarAgora(idProduto, tamanho, quantidade) {
         quantidade: quantidade,
         preco: produto.precoPor,
         total: produto.precoPor * quantidade,
-        data: new Date().toLocaleDateString('pt-BR')
+        data: new Date().toLocaleDateString('pt-BR'),
+        dataCriacao: Date.now()
     };
 
     pedidos.push(novoPedido);
     localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
+    window.location.href = 'pedidos.html';
+}
+
+const botaoFinalizar = document.getElementById('btnFinalizar');
+
+if (botaoFinalizar) {
+    botaoFinalizar.addEventListener('click', finalizarCompra);
+}
+
+function finalizarCompra() {
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+    if (!usuarioLogado) {
+        window.location.href = 'conta.html';
+        return;
+    }
+
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    if (carrinho.length === 0) return;
+
+    let pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+
+    carrinho.forEach(function(item) {
+        pedidos.push({
+            id: Date.now(),
+            emailUsuario: usuarioLogado.email,
+            produtoId: item.id,
+            nome: item.nome,
+            imagem: item.imagem,
+            tamanho: '-',
+            quantidade: item.quantidade,
+            preco: item.preco,
+            total: item.preco * item.quantidade,
+            data: new Date().toLocaleDateString('pt-BR'),
+            dataCriacao: Date.now()
+        });
+    });
+
+    localStorage.setItem('pedidos', JSON.stringify(pedidos));
+    carrinho = [];
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
     window.location.href = 'pedidos.html';
 }
@@ -790,10 +834,25 @@ function renderizarPedidos() {
                 <span class="carrinho-item-nome">${pedido.nome} - Tam: ${pedido.tamanho}</span>
                 <span class="carrinho-item-preco">R$ ${pedido.total.toFixed(2).replace('.', ',')}</span>
                 <span>Qtd: ${pedido.quantidade}</span>
-                <span>${pedido.data}</span>
+                                <span>${pedido.data}</span>
+                <span class="carrinho-item-status">${calcularStatusPedido(pedido.dataCriacao)}</span>
             </div>
         `;
     }).join('');
+}
+
+function calcularStatusPedido(timestamp) {
+    const agora = Date.now();
+    const diffMs = agora - timestamp;
+    const diffDias = diffMs / (1000 * 60 * 60 * 24);
+
+    if (diffDias < 1) {
+        return 'Processando';
+    } else if (diffDias <= 3) {
+        return 'Enviado';
+    } else {
+        return 'Entregue';
+    }
 }
 
 renderizarPedidos();
