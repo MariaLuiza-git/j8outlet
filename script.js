@@ -236,6 +236,16 @@ document.addEventListener('click', function(evento) {
         return;
     }
 
+        const botaoComprarAgora = evento.target.closest('.btn-comprar-agora');
+    if (botaoComprarAgora) {
+        const tamanhoEl = document.getElementById('tamanhoSelecionado');
+        const qtdE1 = document.getElementById('qtdSelecionada');
+        const tamanho = tamanhoEl ? tamanhoEl.textContent : '';
+        const quantidade = qtdE1 ? Number(qtdE1.textContent) : 1;
+        comprarAgora(Number(botaoComprarAgora.dataset.id), tamanho, quantidade);
+        return;
+    }
+
     const botaoAdd = evento.target.closest('.btn-add-carrinho, .btn-add-carrinho-detalhe');
     if (botaoAdd) {
         const qtdE1 = document.getElementById('qtdSelecionada');
@@ -708,6 +718,85 @@ if (formPerfil) {
         sucessoEl.textContent = 'Dados atualizados com sucesso!';
     });
 }
+
+function comprarAgora(idProduto, tamanho, quantidade) {
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+    if (!usuarioLogado) {
+        window.location.href = 'conta.html';
+        return;
+    }
+
+    const produto = produtos.find(function(p) {
+        return p.id === idProduto;
+    });
+
+    if (!produto) return;
+
+    const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+
+    const novoPedido = {
+        id: Date.now(),
+        emailUsuario: usuarioLogado.email,
+        produtoId: produto.id,
+        nome: produto.nome,
+        imagem: produto.imagem,
+        tamanho: tamanho,
+        quantidade: quantidade,
+        preco: produto.precoPor,
+        total: produto.precoPor * quantidade,
+        data: new Date().toLocaleDateString('pt-BR')
+    };
+
+    pedidos.push(novoPedido);
+    localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
+    window.location.href = 'pedidos.html';
+}
+
+function renderizarPedidos() {
+    const areaSemLogin = document.getElementById('areaSemLogin');
+    const areaPedidos = document.getElementById('areaPedidos');
+    if (!areaPedidos) return;
+
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+    if (!usuarioLogado) {
+        areaSemLogin.style.display = 'block';
+        areaPedidos.style.display = 'none';
+        return;
+    }
+
+    areaSemLogin.style.display = 'none';
+    areaPedidos.style.display = 'block';
+
+    const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+
+    const meusPedidos = pedidos.filter(function(pedido) {
+        return pedido.emailUsuario === usuarioLogado.email;
+    });
+
+    const listaEl = document.getElementById('listaPedidos');
+
+    if (meusPedidos.length === 0) {
+        listaEl.innerHTML = '<p>Você ainda não tem pedidos.</p>';
+        return;
+    }
+
+    listaEl.innerHTML = meusPedidos.map(function(pedido) {
+        return `
+            <div class="carrinho-item">
+                <img src="${pedido.imagem}" alt="${pedido.nome}">
+                <span class="carrinho-item-nome">${pedido.nome} - Tam: ${pedido.tamanho}</span>
+                <span class="carrinho-item-preco">R$ ${pedido.total.toFixed(2).replace('.', ',')}</span>
+                <span>Qtd: ${pedido.quantidade}</span>
+                <span>${pedido.data}</span>
+            </div>
+        `;
+    }).join('');
+}
+
+renderizarPedidos();
 
 renderizarCarrinho();
 
