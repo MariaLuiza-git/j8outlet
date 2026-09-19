@@ -775,9 +775,11 @@ function finalizarCompra() {
 
     let pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
 
-    carrinho.forEach(function(item) {
+    const agora = Date.now();
+
+    carrinho.forEach(function(item, index) {
         pedidos.push({
-            id: Date.now(),
+            id: agora + index,
             emailUsuario: usuarioLogado.email,
             produtoId: item.id,
             nome: item.nome,
@@ -787,7 +789,7 @@ function finalizarCompra() {
             preco: item.preco,
             total: item.preco * item.quantidade,
             data: new Date().toLocaleDateString('pt-BR'),
-            dataCriacao: Date.now()
+            dataCriacao: agora
         });
     });
 
