@@ -800,6 +800,39 @@ function finalizarCompra() {
     window.location.href = 'pedidos.html';
 }
 
+function abrirModalPedido(idPedido) {
+    const modal = document.getElementById('modalPedido');
+    const conteudo = document.getElementById('modalPedidoConteudo');
+    if (!modal || !conteudo) return;
+
+    const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+
+    const pedido = pedidos.find(function(p) {
+        return p.id === idPedido;
+    });
+
+    if (!pedido) return;
+
+    conteudo.innerHTML = `
+        <img src="${pedido.imagem}" alt="${pedido.nome}" class="modal-pedido-img">
+        <p><strong>${pedido.nome}</strong></p>
+        <p>Pedido nº ${pedido.id}</p>
+        <p>Data: ${pedido.data}</p>
+        <p>Status: ${calcularStatusPedido(pedido.dataCriacao)}</p>
+        <p>Tamanho: ${pedido.tamanho}</p>
+        <p>Quantidade: ${pedido.quantidade}</p>
+        <p>Preço unitário: R$ ${pedido.preco.toFixed(2).replace('.', ',')}</p>
+        <p>Total: R$ ${pedido.total.toFixed(2).replace('.', ',')}</p>
+    `;
+
+    modal.classList.add('ativo');
+}
+
+function fecharModalPedido() {
+    const modal = document.getElementById('modalPedido');
+    if (modal) modal.classList.remove('ativo');
+}
+
 function renderizarPedidos() {
     const areaSemLogin = document.getElementById('areaSemLogin');
     const areaPedidos = document.getElementById('areaPedidos');
@@ -831,7 +864,7 @@ function renderizarPedidos() {
 
     listaEl.innerHTML = meusPedidos.map(function(pedido) {
         return `
-            <div class="carrinho-item">
+            <div class="carrinho-item pedido-clicavel" data-id="${pedido.id}">
                 <img src="${pedido.imagem}" alt="${pedido.nome}">
                 <span class="carrinho-item-nome">${pedido.nome} - Tam: ${pedido.tamanho}</span>
                 <span class="carrinho-item-preco">R$ ${pedido.total.toFixed(2).replace('.', ',')}</span>
@@ -858,6 +891,29 @@ function calcularStatusPedido(timestamp) {
 }
 
 renderizarPedidos();
+
+const listaPedidosEl = document.getElementById('listaPedidos');
+
+if (listaPedidosEl) {
+    listaPedidosEl.addEventListener('click', function(evento) {
+        const card = evento.target.closest('.pedido-clicavel');
+        if (!card) return;
+        abrirModalPedido(Number(card.dataset.id));
+    });
+}
+
+const btnFecharModal = document.getElementById('btnFecharModal');
+const modalPedidoEl = document.getElementById('modalPedido');
+
+if (btnFecharModal) {
+    btnFecharModal.addEventListener('click', fecharModalPedido);
+}
+
+if (modalPedidoEl) {
+    modalPedidoEl.addEventListener('click', function(evento) {
+        if (evento.target === modalPedidoEl) fecharModalPedido();
+    });
+}
 
 renderizarCarrinho();
 
