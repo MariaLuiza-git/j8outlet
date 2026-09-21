@@ -414,7 +414,7 @@ function adicionarAoCarrinho(idProduto, quantidade){
             nome: produto.nome,
             imagem: produto.imagem,
             preco: produto.precoPor,
-            quantidade: 1
+            quantidade: quantidade
         });
     }
 
@@ -616,7 +616,7 @@ function atualizarCabecalhoConta() {
         const primeiroNome = usuarioLogado.nome.split(' ')[0];
         contaHeaderTexto.textContent = 'Olá, ' + primeiroNome;
     } else {
-        contaHeaderTexto.textContent = 'Entre ou cadastra-se';
+        contaHeaderTexto.textContent = 'Entre ou cadastre-se';
     }
 }
 
