@@ -628,6 +628,7 @@ const botaoSair = document.getElementById('btnSair');
 if (botaoSair) {
     botaoSair.addEventListener('click', function() {
         localStorage.removeItem('usuarioLogado');
+        const emailAntigo = usuarioLogado.email;
         window.location.reload();
     });
 }
@@ -691,6 +692,7 @@ if (formPerfil) {
         sucessoEl.textContent = '';
 
         const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+        const emailAntigo = usuarioLogado.email;
         if (!usuarioLogado) return;
 
         const nome = document.getElementById('perfilNome').value.trim();
@@ -713,6 +715,16 @@ if (formPerfil) {
 
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
         localStorage.setItem('usuarioLogado', JSON.stringify(usuarios[index]));
+
+        let pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+
+        pedidos.forEach(function(pedido) {
+        if (pedido.emailUsuario === emailAntigo) {
+        pedido.emailUsuario = email;
+    }
+});
+
+localStorage.setItem('pedidos', JSON.stringify(pedidos));
 
         atualizarCabecalhoConta();
         sucessoEl.textContent = 'Dados atualizados com sucesso!';
