@@ -1426,6 +1426,21 @@ body {
      .btn-add-carrinho-detalhe {
         width: 100%;
      }
+    .conta-menu-abas {
+        gap: 15px;
+        padding-bottom: 12px;
+        margin-bottom: 20px;
+     }
+     .conta-menu-item {
+        font-size: 12px;
+     }
+     .conta-titulo-esquerda {
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+     }
+     .conta-form input {
+        font-size: 16px;
+     }
  }
 
 
