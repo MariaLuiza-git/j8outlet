@@ -623,7 +623,6 @@ const botaoSair = document.getElementById('btnSair');
 if (botaoSair) {
     botaoSair.addEventListener('click', function() {
         localStorage.removeItem('usuarioLogado');
-        const emailAntigo = usuarioLogado.email;
         window.location.reload();
     });
 }
