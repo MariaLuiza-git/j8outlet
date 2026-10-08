@@ -368,24 +368,19 @@ if (gridResultados) {
         titulo.textContent = `Resultados para: "${termo}"`;
     }
 
-    const produtosResultado = gridResultados.querySelectorAll('.produto-card');
-    let encontrados = 0;
-
-    produtosResultado.forEach((produto) => {
-        const nome = produto.querySelector('.produto-nome').textContent.toLowerCase();
-
-        if (nome.includes(termo)) {
-            produto.style.display = '';
-            encontrados++;
-        } else {
-            produto.style.display = 'none';
-        }
+     const produtosEncontrados = produtos.filter(function(produto) {
+        return produto.nome.toLowerCase().includes(termo);
     });
 
-    if (encontrados === 0) {
-        gridResultados.insertAdjacentHTML('beforeend', '<p>Nenhum produto encontrado.</p>' );
+    if (produtosEncontrados.length === 0) {
+        gridResultados.innerHTML = '<p>Nenhum produto encontrado.</p>';
+    } else {
+        gridResultados.innerHTML = produtosEncontrados.map(criarCardProduto).join('');
     }
 }
+
+
+
 
 renderizarProdutos();
 
