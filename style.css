@@ -680,7 +680,7 @@ body {
 
 .produto-detalhe-info {
     flex: 1;
-    padding-top: 20px;
+    padding-top: 0;
 }
 
 .produto-detalhe-nome {
@@ -762,6 +762,8 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     overflow: hidden;
+    align-self: flex-start;
+    margin-bottom: 12px;
 }
 
 .quantidade-seletor button {
@@ -811,7 +813,7 @@ body {
 
 .produto-detalhe-info {
     flex: 1;
-    padding-top: 20px;
+    padding-top: 0px;
 }
 
 .produto-detalhe-nome {
@@ -1381,13 +1383,26 @@ body {
      .carrinho-pagina {
         padding: 20px 15px;
      }
-     .carrinho-item {
+     #listaPedidos .carrinho-item {
         grid-template-columns: 70px 1fr;
         grid-template-areas:
             "img nome"
             "img preco"
             "img qtd"
-            "img remover";
+            "img data"
+            "img status";
+            gap: 6px 12px;
+     }
+     #listaPedidos .pedido-qtd { grid-area: qtd; }
+     #listaPedidos .pedido-data { grid-area: data; }
+     #listaPedidos .carrinho-item-status { grid-area: status; }
+     #listaPedidos .pedido-qtd,
+     #listaPedidos .pedido-data,
+     #listaPedidos .carrinho-item-status {
+        font-size: 12px;
+     }
+     #listaPedidos .carrinho-item img {
+        align-self: start;
      }
      .carrinho-item img {
         grid-area: img;

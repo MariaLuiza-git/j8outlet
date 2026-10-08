@@ -874,8 +874,8 @@ function renderizarPedidos() {
                 <img src="${pedido.imagem}" alt="${pedido.nome}">
                 <span class="carrinho-item-nome">${pedido.nome} - Tam: ${pedido.tamanho}</span>
                 <span class="carrinho-item-preco">R$ ${pedido.total.toFixed(2).replace('.', ',')}</span>
-                <span>Qtd: ${pedido.quantidade}</span>
-                                <span>${pedido.data}</span>
+                <span class="pedido-qtd">Qtd: ${pedido.quantidade}</span>
+                                <span class="pedido-data">${pedido.data}</span>
                 <span class="carrinho-item-status">${calcularStatusPedido(pedido.dataCriacao)}</span>
             </div>
         `;
