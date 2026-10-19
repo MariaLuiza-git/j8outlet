@@ -803,12 +803,8 @@ body {
 }
 
 .produto-detalhe-img {
-    width: 50%;
-    max-width: 500px;
-    height: 600px;
-    object-fit: cover;
-    border-radius: 8px;
-    flex-shrink: 0;
+    height: 400px;
+    object-fit: contain;
 }
 
 .produto-detalhe-info {
@@ -825,16 +821,13 @@ body {
 }
 
 .produto-detalhe-preco {
-    display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-bottom: 30px;
+    align-items: flex-start;
+    gap: 15px;
 }
 
 .produto-detalhe-preco .preco-de {
-    font-size: 14px;
-    color: #999;
-    text-decoration: line-through;
+    font-size: 13px;
 }
 
 .produto-detalhe-preco .preco-por {
@@ -865,6 +858,7 @@ body {
 .btn-comprar-agora:hover {
     background: #333;
 }
+
 
 .btn-add-carrinho-detalhe {
     width: 100%;
@@ -1455,6 +1449,28 @@ body {
      }
      .conta-form input {
         font-size: 16px;
+     }
+
+      .produto-detalhe {
+        align-items: stretch;
+     }
+     .produto-detalhe-info {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+     }
+     .btn-comprar-agora,
+.btn-add-carrinho-detalhe {
+        box-sizing: border-box;
+     }
+
+      .frete-cep button {
+        padding: 0 14px;
+        font-size: 12px;
+     }
+     .frete-cep input {
+        min-width: 0;
+        padding: 0 10px;
      }
  }
 
